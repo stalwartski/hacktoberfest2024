@@ -1,0 +1,27 @@
+def convert_file_size(size_in_bytes):
+    """
+    Converts the file size from bytes to a human-readable format.
+    
+    Args:
+        size_in_bytes (int): The size of the file in bytes.
+        
+    Returns:
+        str: The size of the file in human-readable format (e.g., KB, MB, GB).
+    """
+    # Define size units
+    size_units = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
+    
+    # Start with the smallest unit
+    size_index = 0
+    
+    # Convert the file size to a human-readable format
+    while size_in_bytes >= 1024 and size_index < len(size_units) - 1:
+        size_in_bytes /= 1024
+        size_index += 1
+    
+    # Return the formatted file size
+    return f"{size_in_bytes:.2f} {size_units[size_index]}"
+
+# Example usage:
+file_size_in_bytes = 123456789
+print(f"File size: {convert_file_size(file_size_in_bytes)}")
